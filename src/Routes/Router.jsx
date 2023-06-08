@@ -24,7 +24,7 @@ import Singup from "../Pages/Shared/Singup/Singup";
           element: <Login></Login>
         },
         {
-          path:'/singup',
+          path:'/signup',
           element: <Singup></Singup>
         }
       ]
