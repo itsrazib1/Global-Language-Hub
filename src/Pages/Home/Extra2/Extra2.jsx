@@ -14,7 +14,7 @@ const Extra2 = () => {
         <Slide>
           <img
             src="../../../../public/img/slide4.png"
-            className="max-w-sm rounded-lg shadow-2xl"
+            className=" w-[95%] rounded-lg shadow-2xl"
           />
           </Slide>
           <div>
@@ -22,7 +22,7 @@ const Extra2 = () => {
         <h1 className="text-5xl font-bold ">What Is IELTS?</h1>
       </Slide>
       <Fade delay={500} cascade damping={0.1}>
-      <p className="text-sm">Internationally recognized English language proficiency test.</p>
+      <p className="text-xs md:text-xl" >Internationally recognized English language proficiency test.</p>
       </Fade>
             
           </div>

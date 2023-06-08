@@ -7,6 +7,7 @@ import Home from "../Pages/Home/Home/Home";
 
 import Login from "../Pages/Shared/Login/Login";
 import Singup from "../Pages/Shared/Singup/Singup";
+import Error from "../Pages/Shared/Error/Error";
 
 
 
@@ -14,6 +15,7 @@ import Singup from "../Pages/Shared/Singup/Singup";
     {
       path: "/",
       element:<Main></Main>,
+      errorElement: <Error></Error>,
       children:[
         {
             path:'/',
