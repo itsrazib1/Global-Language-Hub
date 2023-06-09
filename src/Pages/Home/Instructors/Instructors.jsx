@@ -8,7 +8,7 @@ const Instructors = () => {
 
   useEffect(() => {
     const fetchInstructors = async () => {
-      const response = await fetch('instactor.json');
+      const response = await fetch('http://localhost:5000/instactor');
       const data = await response.json();
       setInstructors(data);
     };

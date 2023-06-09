@@ -19,7 +19,7 @@ const Navber = () => {
   const handleSetActiveRoute = (route) => {
     setActiveRoute(route);
   };
-
+  console.log();
   const item1 = (
     <>
       <li className={activeRoute === 'home' ? 'active' : ''}>
