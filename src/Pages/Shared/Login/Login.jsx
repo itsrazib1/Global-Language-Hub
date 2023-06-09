@@ -2,10 +2,11 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { AuthContext } from "../../../Providers/Authprovider";
+
 import { useForm } from "react-hook-form";
 import Sociallogin from "../SocialLogin/Sociallogin";
 import { useState } from "react";
+import { AuthContext } from "../../../Providers/Authprovider";
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();

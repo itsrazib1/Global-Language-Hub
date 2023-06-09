@@ -4,32 +4,31 @@ const Classes = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    // Fetching data from JSON file (replace 'Classes.json' with your actual JSON file path)
-    fetch("Classes.json")
+    fetch("http://localhost:5000/Classes")
       .then((response) => response.json())
       .then((data) => setClasses(data))
       .catch((error) => console.error(error));
   }, []);
 
-  const handleSelectClass = (classId, availableSeats, isAdmin) => {
+  const handleSelectClass = (_id, availableSeats, isAdmin) => {
     if (!isAdmin) {
       if (availableSeats === 0) {
         alert("No available seats for this class.");
       } else {
-        // Logic for selecting the class
-        // Replace this with your desired action (e.g., redirect to a checkout page)
-        alert(`Selected class with ID: ${classId}`);
+        
+        alert(`Selected class with ID: ${_id}`);
       }
     } else {
       alert("Admin/Instructor cannot select a class.");
     }
   };
+  
 
   return (
     <div className=" grid grid-cols-1 md:grid-cols-3 gap-4 my-10">
       {classes.map((classData) => (
         <div
-          key={classData.id}
+          key={classData._id}
           className={` p-4 card w-96 bg-base-100 shadow-xl class-card ${
             classData.availableSeats === 0 ? "bg-red-400 text-cyan-50" : "bg-white"
           }`}

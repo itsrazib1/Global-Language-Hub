@@ -1,49 +1,22 @@
-import {  useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/Authprovider";
-
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
+  const [selectedClasses, setSelectedClasses] = useState([]);
+  const [enrolledClasses, setEnrolledClasses] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [selectedClasses, setSelectedClasses] = useState([
-    {
-      id: 1,
-      title: "Class 1",
-      description: "This is Class 1",
-      isPaid: false,
-    },
-    {
-      id: 2,
-      title: "Class 2",
-      description: "This is Class 2",
-      isPaid: false,
-    },
-    {
-      id: 3,
-      title: "Class 2",
-      description: "This is Class 2",
-      isPaid: false,
-    },
-    {
-      id: 4,
-      title: "Class 2",
-      description: "This is Class 2",
-      isPaid: false,
-    },
-  ]);
-
-  const [enrolledClasses, setEnrolledClasses] = useState([
-    {
-      id: 3,
-      title: "Class 3",
-      description: "This is Class 3",
-    },
-    {
-      id: 4,
-      title: "Class 4",
-      description: "This is Class 4",
-    },
-  ]);
+  useEffect(() => {
+    fetch("Studentclass.json")
+      .then((response) => response.json())
+      .then((data) => {
+        setSelectedClasses(data.selectedClasses);
+        setEnrolledClasses(data.enrolledClasses);
+        setIsLoading(false); // Mark loading as complete
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   const handleDeleteClass = (classId) => {
     const updatedSelectedClasses = selectedClasses.filter(
@@ -53,7 +26,9 @@ const Dashboard = () => {
   };
 
   const handlePayClass = (classId) => {
-    const selectedClass = selectedClasses.find((classItem) => classItem.id === classId);
+    const selectedClass = selectedClasses.find(
+      (classItem) => classItem.id === classId
+    );
     if (selectedClass) {
       selectedClass.isPaid = true;
       const updatedEnrolledClasses = [...enrolledClasses, selectedClass];
@@ -62,10 +37,14 @@ const Dashboard = () => {
     }
   };
 
+  if (isLoading) {
+    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+  }
+
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Student Dashboard</h2>
-      <h3 className="text-xl font-bold mb-2">Welcome,{user.email} </h3>
+      <h3 className="text-xl font-bold mb-2">Welcome, {user?.email}</h3>
 
       <div className="my-8">
         <h4 className="text-lg font-bold mb-4">My Selected Classes</h4>
