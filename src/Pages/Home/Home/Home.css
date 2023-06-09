@@ -1,0 +1,12 @@
+.theme-light {
+    /* Styles for the light theme */
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  .theme-dark {
+    /* Styles for the dark theme */
+    background-color: #000000;
+    color: #8b8b8b;
+  }
+  

@@ -20,7 +20,7 @@ const Instructors = () => {
     
     <>
     <SectionTitle heading={'Popular Instructors Section'}></SectionTitle>
-    <div className="grid my-10 grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="grid my-10 grid-cols-1 md:grid-cols-2 gap-4 mx-5">
       <AnimatePresence>
         {instructors.map((instructor) => (
           <motion.div

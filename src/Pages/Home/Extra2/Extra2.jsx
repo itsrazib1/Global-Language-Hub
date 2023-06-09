@@ -8,7 +8,7 @@ const Extra2 = () => {
       <SectionTitle heading={'What Is IELTS?'}></SectionTitle>
      
       
-      <div className="mx-auto bg-slate-400 text-center">
+      <div className=" m-5 bg-slate-400 text-center">
       <div className="hero py-10 bg-base-200">
         <div className="hero-content flex-col ">
         <Slide>
