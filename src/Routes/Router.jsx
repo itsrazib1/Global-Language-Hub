@@ -10,6 +10,8 @@ import Singup from "../Pages/Shared/Singup/Singup";
 import Error from "../Pages/Shared/Error/Error";
 import Instructors from "./Instructors/Instructors";
 import Classes from "../Classes/Classes";
+import Dashboard from "../Pages/Dashbord/Dashbord";
+
 
 
 
@@ -43,6 +45,10 @@ import Classes from "../Classes/Classes";
         {
           path:'/classes',
           element:<Classes></Classes>
+        },
+        {
+          path:'/dashbord',
+          element:<Dashboard></Dashboard>
         }
       ]
     },

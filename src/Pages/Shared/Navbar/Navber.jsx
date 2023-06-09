@@ -44,7 +44,7 @@ const Navber = () => {
           <li className="text-xs mt-3 text-white">Hello,{user.email}</li>
           
           <li className="ms-2">
-            <Link>Dashbord</Link>
+            <Link to ='/dashbord' >Dashbord</Link>
           </li>
           
            <img className="rounded-full h-10" src={user.photoURL}alt="" />
