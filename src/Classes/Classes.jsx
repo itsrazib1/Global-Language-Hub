@@ -31,7 +31,7 @@ const Classes = () => {
         <div
           key={classData.id}
           className={` p-4 card w-96 bg-base-100 shadow-xl class-card ${
-            classData.availableSeats === 0 ? "bg-red-600 text-cyan-50" : "bg-white"
+            classData.availableSeats === 0 ? "bg-red-400 text-cyan-50" : "bg-white"
           }`}
         >
           <div className="">

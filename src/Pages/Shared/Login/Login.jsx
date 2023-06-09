@@ -1,20 +1,19 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { AuthContext } from "../../../Providers/Authprovider";
+import { useForm } from "react-hook-form";
 import Sociallogin from "../SocialLogin/Sociallogin";
+import { useState } from "react";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { signIn } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
 
-  const { signIn } = useContext(AuthContext);
-
-  const handleLogin = (event) => {
-    event.preventDefault();
-    console.log(email, password);
+  const onSubmit = (data) => {
+    const { email, password } = data;
     signIn(email, password)
       .then((result) => {
         const user = result.user;
@@ -36,34 +35,36 @@ const Login = () => {
         </div>
         <div className="md:w-[50%] flex flex-col text-center bg-sky-100 items-center justify-center h-[500px]">
           <h1 className="text-2xl font-bold mb-4">Login</h1>
-          <div className="w-64">
+          <form className="w-64" onSubmit={handleSubmit(onSubmit)}>
             <input
               type="text"
               placeholder="Email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              {...register("email", { required: true })}
               className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4"
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mb-4">Email is required</p>
+            )}
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                {...register("password", { required: true })}
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4"
               />
+              {errors.password && (
+                <p className="text-red-500 text-sm mb-4">Password is required</p>
+              )}
               <span
                 className="absolute mt-5 right-3 transform -translate-y-1/2 cursor-pointer"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
             </div>
             <button
               className="w-full bg-blue-500 text-white rounded-lg py-2 mb-4"
-              onClick={handleLogin}
+              type="submit"
             >
               Login
             </button>
@@ -74,9 +75,9 @@ const Login = () => {
               </Link>
             </p>
             <button className="flex btn mx-auto mt-8">
-              <Sociallogin></Sociallogin>
+              <Sociallogin />
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
