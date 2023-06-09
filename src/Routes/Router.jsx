@@ -9,6 +9,7 @@ import Login from "../Pages/Shared/Login/Login";
 import Singup from "../Pages/Shared/Singup/Singup";
 import Error from "../Pages/Shared/Error/Error";
 import Instructors from "./Instructors/Instructors";
+import Classes from "../Classes/Classes";
 
 
 
@@ -38,6 +39,10 @@ import Instructors from "./Instructors/Instructors";
         {
           path:'/instructors',
           element:<Instructors></Instructors>
+        },
+        {
+          path:'/classes',
+          element:<Classes></Classes>
         }
       ]
     },

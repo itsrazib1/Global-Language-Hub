@@ -32,7 +32,7 @@ const Navber = () => {
       <Link to='/instructors' onClick={() => handleSetActiveRoute('instructors')}>Instructors</Link>
     </li>
     <li className={activeRoute === 'classes' ? 'active' : ''}>
-      <a onClick={() => handleSetActiveRoute('classes')}>Classes</a>
+      <Link to='/classes' onClick={() => handleSetActiveRoute('classes')}>Classes</Link>
     </li>
       {user ? (
         <>

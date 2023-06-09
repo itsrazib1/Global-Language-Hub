@@ -1,0 +1,83 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co/b62fRvT/15.jpg",
+      "name": "French Conversation",
+      "instructor": "Ma'am Emily",
+      "availableSeats": 5,
+      "price": 29.99
+    },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co/nmNXRLH/198685-untitled-design-53.jpg",
+      "name": "Spanish Grammar",
+      "instructor": "Mrs. Anderson",
+      "availableSeats": 0,
+      "price": 19.99
+    },
+    {
+      "id": 3,
+      "image": "https://i.ibb.co/Tv2v920/458.jpg",
+      "name": "Advanced English",
+      "instructor": "Sir John",
+      "availableSeats": 10,
+      "price": 39.99
+    },
+    {
+      "id": 4,
+      "image": "https://i.ibb.co/bsyD2jc/HOWTOB-1.png",
+      "name": "Mandarin for Travelers",
+      "instructor": "Mr. Smith",
+      "availableSeats": 2,
+      "price": 24.99
+    },
+    {
+      "id": 5,
+      "image": "https://i.ibb.co/m5xybwR/photo-1571260899304-425eee4c7efc-ixlib-rb-4-0.jpg",
+      "name": "German ",
+      "instructor": "Ms. Roberts",
+      "availableSeats": 8,
+      "price": 34.99
+    },
+    {
+      "id": 6,
+      "image": "https://i.ibb.co/x85ysHz/March-15-A-Guide-to-Effective-Teaching-Styles-web-1024x683-jpg.webp",
+      "name": "Italian for Beginners",
+      "instructor": "Professor Johnson",
+      "availableSeats": 0,
+      "price": 14.99
+    },
+    {
+      "id": 7,
+      "image": "https://i.ibb.co/G0wdmh7/122018-ela-sets-students-up-1034x634-tmb-5x3-xl-1024x629.jpg",
+      "name": "Japanese Kanji Masterclass",
+      "instructor": "Dr. Davis",
+      "availableSeats": 3,
+      "price": 27.99
+    },
+    {
+      "id": 8,
+      "image": "https://i.ibb.co/YPQkrvH/how-to-challenge-students-more.jpg",
+      "name": "Russian Language",
+      "instructor": "Teacher Thompson",
+      "availableSeats": 6,
+      "price": 21.99
+    },
+    {
+      "id": 9,
+      "image": "https://i.ibb.co/ZVmqKfz/images-q-tbn-ANd9-Gc-SGc-Bj-LEYx-Sj-ZYug-Xd-S-tvjn9-ZOx-Otsq-Wq-KQny-Rw-A4-Du8-UGS-CVWTv-Uq-EHJYHBr.jpg",
+      "name": "Arabic Language ",
+      "instructor": "Dr. Wilson",
+      "availableSeats": 1,
+      "price": 19.99
+    },
+    {
+      "id": 10,
+      "image": "https://i.ibb.co/8N3sxsn/1-i-YSncx6-W7-Ue-LIVJb-Snu1w.jpg",
+      "name": " Vocabulary Development",
+      "instructor": "Ms. Roberts",
+      "availableSeats": 4,
+      "price": 31.99
+    }
+  ]
+  
