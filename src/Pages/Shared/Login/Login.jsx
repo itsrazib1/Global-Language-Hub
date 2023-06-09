@@ -1,12 +1,13 @@
-import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import { FaEyeSlash ,FaEye } from 'react-icons/fa';
-import { AuthContext } from '../../../Providers/Authprovider';
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { AuthContext } from "../../../Providers/Authprovider";
+import Sociallogin from "../SocialLogin/Sociallogin";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const { signIn } = useContext(AuthContext);
@@ -20,17 +21,17 @@ const Login = () => {
         console.log(user);
       })
       .catch((error) => {
-        console.log('Login failed:', error);
+        console.log("Login failed:", error);
       });
   };
 
   return (
-    <div className=''>
+    <div className="">
       <Helmet>
         <title>Global Language Hub | Login</title>
       </Helmet>
-      <div className='md:flex flex-row text-center'>
-        <div className='md:w-[50%] justify-center mt-16'>
+      <div className="md:flex flex-row text-center">
+        <div className="md:w-[50%] justify-center mt-16">
           <img src="../../../../public/img/ielts.jpg" alt="" />
         </div>
         <div className="md:w-[50%] flex flex-col text-center bg-sky-100 items-center justify-center h-[500px]">
@@ -39,16 +40,16 @@ const Login = () => {
             <input
               type="text"
               placeholder="Email"
-              name='email'
+              name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4"
             />
             <div className="relative">
               <input
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
-                name='password'
+                name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4"
@@ -67,17 +68,13 @@ const Login = () => {
               Login
             </button>
             <p className="text-gray-600">
-              Dont have an account?{' '}
-              <br />
-              <Link to='/signup' className="text-blue-500">
+              Dont have an account? <br />
+              <Link to="/signup" className="text-blue-500">
                 Register here
               </Link>
             </p>
-            <button className='flex btn mx-auto'>
-              <button className='flex'>
-                <img className='w-6 me-3' src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" alt="" />
-                <p className='mt-1'>Login With Google</p>
-              </button>
+            <button className="flex btn mx-auto mt-8">
+              <Sociallogin></Sociallogin>
             </button>
           </div>
         </div>

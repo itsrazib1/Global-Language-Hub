@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/Authprovider";
 import './Navber.css'
+
+
 const Navber = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -27,7 +29,7 @@ const Navber = () => {
     </li>
       
     <li className={activeRoute === 'instructors' ? 'active' : ''}>
-      <a onClick={() => handleSetActiveRoute('instructors')}>Instructors</a>
+      <Link to='/instructors' onClick={() => handleSetActiveRoute('instructors')}>Instructors</Link>
     </li>
     <li className={activeRoute === 'classes' ? 'active' : ''}>
       <a onClick={() => handleSetActiveRoute('classes')}>Classes</a>
@@ -44,6 +46,9 @@ const Navber = () => {
           <li className="ms-2">
             <Link>Dashbord</Link>
           </li>
+          
+           <img className="rounded-full h-10" src={user.photoURL}alt="" />
+          
         </>
       ) : (
         <li>

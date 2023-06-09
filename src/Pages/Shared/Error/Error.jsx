@@ -10,9 +10,9 @@ const Error = () => {
         backgroundImage: `url('/img/opps.jpg')`,
       }}
     >
-      <div className="max-w-md px-6 py-8 bg-white shadow-lg rounded-lg">
+      <div className="max-w-md bg-opacity-25 bg-black px-6 py-8 text-white shadow-lg rounded-lg">
         <h1 className="text-2xl font-bold mb-4">Oops! Something went wrong.</h1>
-        <p className="text-gray-600 mb-6">
+        <p className=" mb-6 text-white">
           Were sorry, but the page you requested could not be found.
         </p>
         <Link

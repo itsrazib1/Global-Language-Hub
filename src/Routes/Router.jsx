@@ -8,6 +8,12 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Shared/Login/Login";
 import Singup from "../Pages/Shared/Singup/Singup";
 import Error from "../Pages/Shared/Error/Error";
+import Instructors from "./Instructors/Instructors";
+
+
+
+
+
 
 
 
@@ -28,6 +34,10 @@ import Error from "../Pages/Shared/Error/Error";
         {
           path:'/signup',
           element: <Singup></Singup>
+        },
+        {
+          path:'/instructors',
+          element:<Instructors></Instructors>
         }
       ]
     },
