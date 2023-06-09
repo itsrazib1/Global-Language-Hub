@@ -37,7 +37,7 @@ const Navber = () => {
       {user ? (
         <>
           <li>
-            <Link to="/" onClick={logOut}>
+            <Link className="text-rose-900 font-bold" to="/" onClick={logOut}>
               Logout
             </Link>
           </li>
