@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/Authprovider";
-
+import { FaCheckCircle } from 'react-icons/fa';
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const [selectedClasses, setSelectedClasses] = useState([]);
@@ -47,20 +47,20 @@ const Dashboard = () => {
   };
 
   if (isLoading) {
-    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+    return <div className="flex  items-center ">Loading...</div>;
   }
 
   return (
-    <div className="p-4">
+    <div className="p-4 ">
       <h2 className="text-2xl font-bold mb-4">Student Dashboard</h2>
       <h3 className="text-xl font-bold mb-2">Welcome, {user?.email}</h3>
 
       <div className="my-8">
         <h4 className="text-lg font-bold mb-4">Your Selected Classes is : {selectedClasses.length}</h4>
         {selectedClasses.length > 0 ? (
-          <ul className="space-y-4">
+          <ul className="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4 ">
             {selectedClasses.map((classItem) => (
-              <li key={classItem._id} className="border p-4 rounded-md shadow-md bg-white">
+              <li  key={classItem._id} className="border  p-4 rounded-md shadow-md bg-white">
                 <div className="flex items-center mb-4">
                   <img className="w-16 h-16 rounded-full" src={classItem.image} alt={classItem.name} />
                   <div className="ml-4">
@@ -97,7 +97,7 @@ const Dashboard = () => {
       <div>
         <h4 className="text-lg font-bold mb-4">My Enrolled Classes</h4>
         {enrolledClasses.length > 0 ? (
-          <ul className="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4 h-[450px]">
+          <ul className="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4 ">
             {enrolledClasses.map((classItem) => (
               <li key={classItem._id} className="border p-4 rounded-md">
                 <div>
@@ -107,7 +107,7 @@ const Dashboard = () => {
                   <h5 className="text-lg font-bold">{classItem.name}</h5>
                   <p className="text-gray-500">Instructor: {classItem.instructor}</p>
                   <p className="text-gray-500">Available Seats: {classItem.availableSeats}</p>
-                  <p className="text-gray-500">Price: ${classItem.price}</p>
+                  <p className="btn btn-disabled btn-block">Price: ${classItem.price} PAID.<FaCheckCircle className="text-green-600 text-2xl" /></p>
                   <div></div>
                 </div>
               </li>
