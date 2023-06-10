@@ -18,10 +18,20 @@ const Dashboard = () => {
   }, []);
 
   const handleDeleteClass = (classId) => {
-    const updatedSelectedClasses = selectedClasses.filter(
-      (classItem) => classItem._id !== classId
-    );
-    setSelectedClasses(updatedSelectedClasses);
+    fetch(`http://localhost:5000/Studentclass/${classId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.ok) {
+          const updatedSelectedClasses = selectedClasses.filter(
+            (classItem) => classItem._id !== classId
+          );
+          setSelectedClasses(updatedSelectedClasses);
+        } else {
+          throw new Error("Failed to delete class");
+        }
+      })
+      .catch((error) => console.error(error));
   };
 
   const handlePayClass = (classId) => {
@@ -39,50 +49,45 @@ const Dashboard = () => {
   if (isLoading) {
     return <div className="flex justify-center items-center h-screen">Loading...</div>;
   }
-  
+
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Student Dashboard</h2>
       <h3 className="text-xl font-bold mb-2">Welcome, {user?.email}</h3>
 
       <div className="my-8">
-        <h4 className="text-lg font-bold mb-4">My Selected Classes is : {selectedClasses.length}</h4>
+        <h4 className="text-lg font-bold mb-4">Your Selected Classes is : {selectedClasses.length}</h4>
         {selectedClasses.length > 0 ? (
           <ul className="space-y-4">
-            
             {selectedClasses.map((classItem) => (
-              
               <li key={classItem._id} className="border p-4 rounded-md shadow-md bg-white">
-              <div className="flex items-center mb-4">
-                <img className="w-16 h-16 rounded-full" src={classItem.image} alt={classItem.name} />
-                <div className="ml-4">
-                  <h5 className="text-lg font-bold">{classItem.name}</h5>
-                  <p className="text-gray-500">{classItem.instructor}</p>
+                <div className="flex items-center mb-4">
+                  <img className="w-16 h-16 rounded-full" src={classItem.image} alt={classItem.name} />
+                  <div className="ml-4">
+                    <h5 className="text-lg font-bold">{classItem.name}</h5>
+                    <p className="text-gray-500">{classItem.instructor}</p>
+                  </div>
                 </div>
-              </div>
-              <p className="text-gray-500 mb-2">Available Seats: {classItem.availableSeats}</p>
-              <p className="text-gray-500 mb-4">Price: ${classItem.price}</p>
-              <div className="flex justify-end">
-                <button
-                  className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md mr-2"
-                  onClick={() => handleDeleteClass(classItem._id)}
-                >
-                  Delete
-                </button>
-                {!classItem.isPaid && (
+                <p className="text-gray-500 mb-2">Available Seats: {classItem.availableSeats}</p>
+                <p className="text-gray-500 mb-4">Price: ${classItem.price}</p>
+                <div className="flex justify-end">
                   <button
-                    className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
-                    onClick={() => handlePayClass(classItem._id)}
+                    className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md mr-2"
+                    onClick={() => handleDeleteClass(classItem._id)}
                   >
-                    Pay
+                    Delete
                   </button>
-                )}
-              </div>
-            </li>
-            
-
+                  {!classItem.isPaid && (
+                    <button
+                      className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
+                      onClick={() => handlePayClass(classItem._id)}
+                    >
+                      Pay
+                    </button>
+                  )}
+                </div>
+              </li>
             ))}
-            
           </ul>
         ) : (
           <p>No selected classes.</p>
@@ -95,17 +100,17 @@ const Dashboard = () => {
           <ul className="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4 h-[450px]">
             {enrolledClasses.map((classItem) => (
               <li key={classItem._id} className="border p-4 rounded-md">
-              <div>
-                <img src={classItem.image} alt={classItem.name} className="h-[300px]" />
-              </div>
-              <div>
-                <h5 className="text-lg font-bold">{classItem.name}</h5>
-                <p className="text-gray-500">Instructor: {classItem.instructor}</p>
-                <p className="text-gray-500">Available Seats: {classItem.availableSeats}</p>
-                <p className="text-gray-500">Price: ${classItem.price}</p>
-                <div></div>
-              </div>
-            </li>
+                <div>
+                  <img src={classItem.image} alt={classItem.name} className="h-[300px]" />
+                </div>
+                <div>
+                  <h5 className="text-lg font-bold">{classItem.name}</h5>
+                  <p className="text-gray-500">Instructor: {classItem.instructor}</p>
+                  <p className="text-gray-500">Available Seats: {classItem.availableSeats}</p>
+                  <p className="text-gray-500">Price: ${classItem.price}</p>
+                  <div></div>
+                </div>
+              </li>
             ))}
           </ul>
         ) : (
