@@ -1,37 +1,21 @@
-{
-    "selectedClasses": [
-      {
-        "id": 1,
-        "title": "Class 1",
-        "description": "This is Class 1",
-        "isPaid": false
-      },
-      {
-        "id": 2,
-        "title": "Class 2",
-        "description": "This is Class 2",
-        "isPaid": false
-      },
-      {
-        "id": 3,
-        "title": "Class 3",
-        "description": "This is Class 2",
-        "isPaid": false
-      }
-     
-    ],
-    "enrolledClasses": [
-      {
-        "id": 3,
-        "title": "Class 3",
-        "description": "This is Class 3"
-      },
-      {
-        "id": 4,
-        "title": "Class 4",
-        "description": "This is Class 4"
-      }
-      
-    ]
+[
+  {
+    "id": 1,
+    "title": "Class 1",
+    "description": "This is Class 1",
+    "isPaid": false
+  },
+  {
+    "id": 2,
+    "title": "Class 2",
+    "description": "This is Class 2",
+    "isPaid": false
+  },
+  {
+    "id": 3,
+    "title": "Class 3",
+    "description": "This is Class 2",
+    "isPaid": false
   }
+]
   

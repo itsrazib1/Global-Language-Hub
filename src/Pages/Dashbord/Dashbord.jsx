@@ -8,11 +8,10 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("Studentclass.json")
+    fetch("http://localhost:5000/Studentclass")
       .then((response) => response.json())
       .then((data) => {
-        setSelectedClasses(data.selectedClasses);
-        setEnrolledClasses(data.enrolledClasses);
+        setSelectedClasses(data);
         setIsLoading(false); // Mark loading as complete
       })
       .catch((error) => console.error(error));
@@ -20,14 +19,14 @@ const Dashboard = () => {
 
   const handleDeleteClass = (classId) => {
     const updatedSelectedClasses = selectedClasses.filter(
-      (classItem) => classItem.id !== classId
+      (classItem) => classItem._id !== classId
     );
     setSelectedClasses(updatedSelectedClasses);
   };
 
   const handlePayClass = (classId) => {
     const selectedClass = selectedClasses.find(
-      (classItem) => classItem.id === classId
+      (classItem) => classItem._id === classId
     );
     if (selectedClass) {
       selectedClass.isPaid = true;
@@ -40,38 +39,50 @@ const Dashboard = () => {
   if (isLoading) {
     return <div className="flex justify-center items-center h-screen">Loading...</div>;
   }
-
+  
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Student Dashboard</h2>
       <h3 className="text-xl font-bold mb-2">Welcome, {user?.email}</h3>
 
       <div className="my-8">
-        <h4 className="text-lg font-bold mb-4">My Selected Classes</h4>
+        <h4 className="text-lg font-bold mb-4">My Selected Classes is : {selectedClasses.length}</h4>
         {selectedClasses.length > 0 ? (
           <ul className="space-y-4">
+            
             {selectedClasses.map((classItem) => (
-              <li key={classItem.id} className="border p-4 rounded-md">
-                <h5 className="text-lg font-bold">{classItem.title}</h5>
-                <p className="text-gray-500">{classItem.description}</p>
-                <div className="flex justify-end mt-4">
-                  <button
-                    className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md mr-2"
-                    onClick={() => handleDeleteClass(classItem.id)}
-                  >
-                    Delete
-                  </button>
-                  {!classItem.isPaid && (
-                    <button
-                      className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
-                      onClick={() => handlePayClass(classItem.id)}
-                    >
-                      Pay
-                    </button>
-                  )}
+              
+              <li key={classItem._id} className="border p-4 rounded-md shadow-md bg-white">
+              <div className="flex items-center mb-4">
+                <img className="w-16 h-16 rounded-full" src={classItem.image} alt={classItem.name} />
+                <div className="ml-4">
+                  <h5 className="text-lg font-bold">{classItem.name}</h5>
+                  <p className="text-gray-500">{classItem.instructor}</p>
                 </div>
-              </li>
+              </div>
+              <p className="text-gray-500 mb-2">Available Seats: {classItem.availableSeats}</p>
+              <p className="text-gray-500 mb-4">Price: ${classItem.price}</p>
+              <div className="flex justify-end">
+                <button
+                  className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md mr-2"
+                  onClick={() => handleDeleteClass(classItem._id)}
+                >
+                  Delete
+                </button>
+                {!classItem.isPaid && (
+                  <button
+                    className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
+                    onClick={() => handlePayClass(classItem._id)}
+                  >
+                    Pay
+                  </button>
+                )}
+              </div>
+            </li>
+            
+
             ))}
+            
           </ul>
         ) : (
           <p>No selected classes.</p>
@@ -81,12 +92,20 @@ const Dashboard = () => {
       <div>
         <h4 className="text-lg font-bold mb-4">My Enrolled Classes</h4>
         {enrolledClasses.length > 0 ? (
-          <ul className="space-y-4">
+          <ul className="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4 h-[450px]">
             {enrolledClasses.map((classItem) => (
-              <li key={classItem.id} className="border p-4 rounded-md">
-                <h5 className="text-lg font-bold">{classItem.title}</h5>
-                <p className="text-gray-500">{classItem.description}</p>
-              </li>
+              <li key={classItem._id} className="border p-4 rounded-md">
+              <div>
+                <img src={classItem.image} alt={classItem.name} className="h-[300px]" />
+              </div>
+              <div>
+                <h5 className="text-lg font-bold">{classItem.name}</h5>
+                <p className="text-gray-500">Instructor: {classItem.instructor}</p>
+                <p className="text-gray-500">Available Seats: {classItem.availableSeats}</p>
+                <p className="text-gray-500">Price: ${classItem.price}</p>
+                <div></div>
+              </div>
+            </li>
             ))}
           </ul>
         ) : (
