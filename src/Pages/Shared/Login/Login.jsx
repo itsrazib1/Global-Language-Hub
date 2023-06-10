@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 
@@ -11,6 +11,9 @@ import { AuthContext } from "../../../Providers/Authprovider";
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const loacation = useLocation();
+  const from = loacation.state?.from?.pathname || '/';
   const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = (data) => {
@@ -19,6 +22,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, {replace:true})
       })
       .catch((error) => {
         console.log("Login failed:", error);

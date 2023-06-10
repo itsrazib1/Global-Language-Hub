@@ -11,6 +11,7 @@ import Error from "../Pages/Shared/Error/Error";
 import Instructors from "./Instructors/Instructors";
 import Classes from "../Classes/Classes";
 import Dashboard from "../Pages/Dashbord/Dashbord";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -48,7 +49,7 @@ import Dashboard from "../Pages/Dashbord/Dashbord";
         },
         {
           path:'/dashbord',
-          element:<Dashboard></Dashboard>
+          element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>
         }
       ]
     },
