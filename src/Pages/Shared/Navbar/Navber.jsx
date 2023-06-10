@@ -4,10 +4,12 @@ import { AuthContext } from "../../../Providers/Authprovider";
 import './Navber.css'
 
 
+
 const Navber = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
+  
   
 
   const [activeRoute, setActiveRoute] = useState('');
@@ -114,7 +116,7 @@ const Navber = () => {
                   src="https://i.ibb.co/F3Y4Rpr/1200px-GLH-Hotel-Management-logo-svg.png"
                   alt="Logo"
                 />
-                Global Language Hub
+                Global Language Hub 
               </a>
             </div>
           </div>

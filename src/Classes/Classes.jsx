@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 
 import Swal from "sweetalert2";
+import ClassesQuare from "../Hooks/ClassesQuare";
 
 const Classes = () => {
   const [classes, setClasses] = useState([]);
-
-  useEffect(() => {
+  const [classe] = ClassesQuare();
+   useEffect(() => {
     fetch("http://localhost:5000/Classes")
       .then((response) => response.json())
       .then((data) => setClasses(data))
@@ -56,7 +57,10 @@ const Classes = () => {
   };
 
   return (
+    <>
+    <h2 className="text-center text-5xl font-bold mt-5 text-[#3bbac3]">Total Class : {classe.length || 0} </h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-10">
+      
       {classes.map((classData) => (
         <div
           key={classData._id}
@@ -108,6 +112,8 @@ const Classes = () => {
         </div>
       ))}
     </div>
+    </>
+    
   );
 };
 
