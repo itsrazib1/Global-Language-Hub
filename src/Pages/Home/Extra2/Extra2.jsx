@@ -1,5 +1,6 @@
 import { Fade, Slide } from "react-awesome-reveal";
 import SectionTitle from "../../Shared/Sectiontitle/Sectiontitle";
+import Img from '../../../../public/img/slide4.png'
 
 const Extra2 = () => {
   return (
@@ -13,7 +14,7 @@ const Extra2 = () => {
         <div className="hero-content flex-col ">
         <Slide>
           <img
-            src="../../../../public/img/slide4.png"
+            src={Img}
             className=" w-[95%] rounded-lg shadow-2xl"
           />
           </Slide>

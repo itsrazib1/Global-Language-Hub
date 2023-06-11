@@ -35,7 +35,8 @@ const Dashbord = () => {
     const { user } = useContext(AuthContext);
     
     const isAdmin = (user.email === 'try@gmail.com');
-
+    const isInstractor = (user.email === 'try1@gmail.com');
+console.log('https://global-language-hub-server-xoxorazibahamed-gmailcom.vercel.app/');
   return (
     <div>
 
@@ -83,11 +84,40 @@ const Dashbord = () => {
                   </NavLink>
                 </li>
               </>
-            ) : (
+            )
+             : isInstractor ? (
               <>
                 <li>
                   <NavLink to="/dashbord/mycart">
-                    <FaBook></FaBook> My Added Class
+                    <FaBook></FaBook> Added Class
+                  </NavLink>
+                </li>
+               
+                <li>
+                  <NavLink to="/">
+                    <FaHome></FaHome> Go To Home
+                  </NavLink>
+                </li>
+                <div className="divider"></div>
+                <li>
+                  <NavLink to="/instructors">
+                    <FaUserTie></FaUserTie>Instructors
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/classes">
+                    <FaChalkboardTeacher></FaChalkboardTeacher> Classes
+                  </NavLink>
+                </li>
+              </>
+             
+            )
+            :
+            <>
+            <>
+                <li>
+                  <NavLink to="/dashbord/mycart">
+                    <FaBook></FaBook>My Added Class
                   </NavLink>
                 </li>
                 <li>
@@ -112,7 +142,8 @@ const Dashbord = () => {
                   </NavLink>
                 </li>
               </>
-            )}
+            </>
+          }
           </ul>
         </div>
       </div>
