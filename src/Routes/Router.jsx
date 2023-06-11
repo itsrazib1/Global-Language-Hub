@@ -13,6 +13,7 @@ import Classes from "../Classes/Classes";
 import Dashboard from "../Pages/Dashbord/Dashbord";
 import PrivateRoute from "./PrivateRoute";
 import Dashbord from "../Layout/Dashbord";
+import Alluser from "../Pages/Alluser/Alluser";
 
 
 
@@ -60,7 +61,11 @@ import Dashbord from "../Layout/Dashbord";
         {
           path:'mycart',
           element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute> 
-        }
+        },
+        {
+          path:'alluser',
+          element:<PrivateRoute><Alluser></Alluser></PrivateRoute> 
+        },
       ]
       
     }

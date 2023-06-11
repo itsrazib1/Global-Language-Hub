@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/Authprovider";
-import { FaCheckCircle } from 'react-icons/fa';
+import { FaCheckCircle, FaDollarSign, FaTrashAlt } from 'react-icons/fa';
+import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const [selectedClasses, setSelectedClasses] = useState([]);
@@ -23,6 +25,13 @@ const Dashboard = () => {
     })
       .then((response) => {
         if (response.ok) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Delete SuccessFull',
+            showConfirmButton: false,
+            timer: 1500
+          })
           const updatedSelectedClasses = selectedClasses.filter(
             (classItem) => classItem._id !== classId
           );
@@ -51,6 +60,10 @@ const Dashboard = () => {
   }
 
   return (
+   <>
+   <Helmet>
+        <title>GLH | MY Added Class</title>
+      </Helmet>
     <div className="p-4 ">
       <h2 className="text-2xl font-bold mb-4">Student Dashboard</h2>
       <h3 className="text-xl font-bold mb-2">Welcome, {user?.email}</h3>
@@ -75,14 +88,14 @@ const Dashboard = () => {
                     className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md mr-2"
                     onClick={() => handleDeleteClass(classItem._id)}
                   >
-                    Delete
+                    <div className="flex text-sm">Delete<FaTrashAlt className="mt-1 ms-1"></FaTrashAlt></div>
                   </button>
                   {!classItem.isPaid && (
                     <button
                       className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
                       onClick={() => handlePayClass(classItem._id)}
                     >
-                      Pay
+                      <div className="flex">Pay <FaDollarSign className="mt-1 ms-1"></FaDollarSign></div>
                     </button>
                   )}
                 </div>
@@ -118,6 +131,7 @@ const Dashboard = () => {
         )}
       </div>
     </div>
+   </>
   );
 };
 

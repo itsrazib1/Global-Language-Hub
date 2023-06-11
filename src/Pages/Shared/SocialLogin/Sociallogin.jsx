@@ -7,9 +7,29 @@ const Sociallogin = () => {
   // const navigate = useNavigate();
   // const location = useLocation();
   const handleGoogleSingin = () => {
-    googleSingin().then((result) => {
+    googleSingin()
+    .then((result) => {
+      
       const loggedInUser = result.user;
+      
       console.log(loggedInUser);
+
+      const saveUser = {name:loggedInUser.displayName,email:loggedInUser.email}
+        fetch("http://localhost:5000/users",{
+          method:'POST',
+          headers:{
+            'content-type':'application/json'
+          },
+          body: JSON.stringify(saveUser)
+        })
+        .then(res => res.json() )
+        .then(data => {
+          if(data.insertedId){
+            alert ("User created successfully!")
+          }
+        })
+
+        console.log("User created successfully!");
       // navigate(from ,{replace:true});
     });
   };

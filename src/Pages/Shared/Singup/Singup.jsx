@@ -83,10 +83,26 @@ const Signup = () => {
       gender,
     };
 
-    createUser(email, password, userData)
+    createUser(email, password,name,photoURL, userData)
       .then(() => {
+        const saveUser = {name:name,email:email}
+        fetch("http://localhost:5000/users",{
+          method:'POST',
+          headers:{
+            'content-type':'application/json'
+          },
+          body: JSON.stringify(saveUser)
+        })
+        .then(res => res.json() )
+        .then(data => {
+          if(data.insertedId){
+            alert ("User created successfully!")
+          }
+        })
+
         console.log("User created successfully!");
       })
+
       .catch((error) => {
         console.log("Error creating user:", error);
       });
