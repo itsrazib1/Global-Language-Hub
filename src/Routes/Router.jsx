@@ -62,9 +62,10 @@ import Alluser from "../Pages/Alluser/Alluser";
           path:'mycart',
           element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute> 
         },
+        
         {
           path:'alluser',
-          element:<PrivateRoute><Alluser></Alluser></PrivateRoute> 
+          element:<Alluser></Alluser>
         },
       ]
       

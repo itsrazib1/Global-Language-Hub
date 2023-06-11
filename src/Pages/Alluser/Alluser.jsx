@@ -8,7 +8,30 @@ const Alluser = () => {
     return res.json();
   });
 
-  const handleDeleteClass = (user) => {};
+  const handleDeleteClass = (user) => {
+    fetch(`http://localhost:5000/users/${user._id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.ok) {
+            refetch();
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Delete SuccessFull',
+            showConfirmButton: false,
+            timer: 1500
+          })
+         
+        } 
+      })
+      .catch((error) => console.error(error));
+  };
+
+
+
+
+
   const handleMakeAdmin = user => {
     fetch(`http://localhost:5000/users/admin/${user._id}`,{
         method: 'PATCH'

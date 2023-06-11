@@ -8,16 +8,37 @@ import {
   FaWallet,
   FaBookMedical
 } from "react-icons/fa";
-import Navber from "../Pages/Shared/Navbar/Navber";
 import WelcomePage from "../Pages/Dashbord/Mycart";
+import {  useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Providers/Authprovider";
+
+
+
 
 const Dashbord = () => {
+  const [users, setUsers] = useState([]);
+  
+
+  useEffect(() => {
+    fetch('http://localhost:5000/users')
+      .then(response => response.json())
+      .then(data => setUsers(data));
+  }, []);
+
+  
+ 
+  
   const location = useLocation();
-  const isAdmin = true;
-  const noHeaderFooter = location.pathname.includes("/dashbord/mycart") || location.pathname.includes("/dashbord/alluser");
+  const noHeaderFooter =
+    location.pathname.includes("/dashbord/mycart") ||
+    location.pathname.includes("/dashbord/alluser");
+    const { user } = useContext(AuthContext);
+    
+    const isAdmin = (user.email === 'try@gmail.com');
 
   return (
     <div>
+
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center ">
@@ -27,7 +48,6 @@ const Dashbord = () => {
           >
             Open drawer
           </label>
-          
           <Outlet></Outlet>
           {noHeaderFooter || <WelcomePage></WelcomePage>}
         </div>
@@ -62,7 +82,6 @@ const Dashbord = () => {
                     <FaChalkboardTeacher></FaChalkboardTeacher> Classes
                   </NavLink>
                 </li>
-                {/*  */}
               </>
             ) : (
               <>
@@ -81,7 +100,6 @@ const Dashbord = () => {
                     <FaHome></FaHome> Go To Home
                   </NavLink>
                 </li>
-
                 <div className="divider"></div>
                 <li>
                   <NavLink to="/instructors">
