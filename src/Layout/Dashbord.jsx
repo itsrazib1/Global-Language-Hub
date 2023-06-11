@@ -31,11 +31,11 @@ const Dashbord = () => {
   const location = useLocation();
   const noHeaderFooter =
     location.pathname.includes("/dashbord/mycart") ||
+    location.pathname.includes("/dashbord/addedclass") ||
     location.pathname.includes("/dashbord/alluser");
     const { user } = useContext(AuthContext);
-    
-    const isAdmin = (user.email === 'try@gmail.com');
-    const isInstractor = (user.email === 'try1@gmail.com');
+    const isAdmin = user?.email === 'try@gmail.com';
+    const isInstractor = user?.email === 'try1@gmail.com';
 console.log('https://global-language-hub-server-xoxorazibahamed-gmailcom.vercel.app/');
   return (
     <div>
@@ -88,7 +88,7 @@ console.log('https://global-language-hub-server-xoxorazibahamed-gmailcom.vercel.
              : isInstractor ? (
               <>
                 <li>
-                  <NavLink to="/dashbord/mycart">
+                  <NavLink to="/dashbord/addedclass">
                     <FaBook></FaBook> Added Class
                   </NavLink>
                 </li>

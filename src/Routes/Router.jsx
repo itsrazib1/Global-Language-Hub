@@ -14,13 +14,7 @@ import Dashboard from "../Pages/Dashbord/Dashbord";
 import PrivateRoute from "./PrivateRoute";
 import Dashbord from "../Layout/Dashbord";
 import Alluser from "../Pages/Alluser/Alluser";
-
-
-
-
-
-
-
+import AddedClass from "../Layout/Addedclass";
 
 
 
@@ -66,6 +60,10 @@ import Alluser from "../Pages/Alluser/Alluser";
         {
           path:'alluser',
           element:<Alluser></Alluser>
+        },
+        {
+          path:'addedclass',
+          element:<AddedClass></AddedClass>
         },
       ]
       
