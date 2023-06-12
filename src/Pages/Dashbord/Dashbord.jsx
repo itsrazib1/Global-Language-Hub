@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/Authprovider";
-import { FaCheckCircle, FaDollarSign, FaTrashAlt } from 'react-icons/fa';
+import { FaCheckCircle,FaDollarSign , FaTrashAlt } from 'react-icons/fa';
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const [selectedClasses, setSelectedClasses] = useState([]);
@@ -48,7 +49,7 @@ const Dashboard = () => {
       (classItem) => classItem._id === classId
     );
     if (selectedClass) {
-      selectedClass.isPaid = true;
+      // selectedClass.isPaid = true;
       const updatedEnrolledClasses = [...enrolledClasses, selectedClass];
       setEnrolledClasses(updatedEnrolledClasses);
       handleDeleteClass(classId);
@@ -91,12 +92,15 @@ const Dashboard = () => {
                     <div className="flex text-sm">Delete<FaTrashAlt className="mt-1 ms-1"></FaTrashAlt></div>
                   </button>
                   {!classItem.isPaid && (
-                    <button
-                      className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
-                      onClick={() => handlePayClass(classItem._id)}
-                    >
-                      <div className="flex">Pay <FaDollarSign className="mt-1 ms-1"></FaDollarSign></div>
-                    </button>
+                    <Link to='/dashbord/payment'>
+ <button
+                    className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md mr-2"
+                    onClick={() => handlePayClass(classItem._id)}
+                  >
+                    <div className="flex text-sm"> Pay <FaDollarSign className="mt-1 ms-1"></FaDollarSign></div>
+                  </button>
+                    </Link>
+                   
                   )}
                 </div>
               </li>

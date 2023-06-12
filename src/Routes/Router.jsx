@@ -15,6 +15,7 @@ import PrivateRoute from "./PrivateRoute";
 import Dashbord from "../Layout/Dashbord";
 import Alluser from "../Pages/Alluser/Alluser";
 import AddedClass from "../Layout/Addedclass";
+import Payment from "../Layout/Payment";
 
 
 
@@ -62,7 +63,15 @@ import AddedClass from "../Layout/Addedclass";
           element:<Alluser></Alluser>
         },
         {
+          path:'payment',
+          element:<Payment></Payment>
+        },
+        {
           path:'addedclass',
+          element:<AddedClass></AddedClass>
+        },
+        {
+          path:'paymenthistory',
           element:<AddedClass></AddedClass>
         },
       ]

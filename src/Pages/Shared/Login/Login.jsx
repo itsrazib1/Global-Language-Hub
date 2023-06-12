@@ -39,7 +39,7 @@ const Login = () => {
           <img src="../../../../public/img/ielts.jpg" alt="" />
         </div>
         <div className="md:w-[50%] flex flex-col text-center bg-sky-100 items-center justify-center h-[500px]">
-          <h1 className="text-2xl font-bold mb-4">Login</h1>
+          <h1 className="text-2xl font-bold ">Login</h1>
           <form className="w-64" onSubmit={handleSubmit(onSubmit)}>
             <input
               type="text"
@@ -61,7 +61,7 @@ const Login = () => {
                 <p className="text-red-500 text-sm mb-4">Password is required</p>
               )}
               <span
-                className="absolute mt-5 right-3 transform -translate-y-1/2 cursor-pointer"
+                className="absolute right-3 transform -mt-11 cursor-pointer"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}

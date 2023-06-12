@@ -24,7 +24,7 @@ const AddClassForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto">
+    <div className="w-full  mx-auto bg-teal-200 border-2 p-10 rounded-3xl  rounded-tl-none rounded-br-none ">
       
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='flex gap-4'>
@@ -80,9 +80,8 @@ const AddClassForm = () => {
         </div>
        </div>
 
-       
-
-        <div className="mb-4">
+       <div className='flex gap-4'>
+       <div className="mb-4">
           <label htmlFor="availableSeats" className="font-semibold">
             Available seats
           </label>
@@ -105,13 +104,16 @@ const AddClassForm = () => {
             className="w-full border border-gray-300 rounded px-3 py-2 mt-1"
           />
         </div>
+       </div>
 
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white rounded px-4 py-2"
-        >
-          Add
-        </button>
+       
+
+       <button
+              className=" btn btn-secondary btn-block mx-auto text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="submit"
+            >
+              Add
+            </button>
       </form>
     </div>
   );

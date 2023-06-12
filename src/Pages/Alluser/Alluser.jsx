@@ -80,7 +80,11 @@ const Alluser = () => {
                 <td>
                   {user.role === "admin" ? (
                     "Admin"
-                  ) : (
+                  ):
+                  user.role === "instractor" ? (
+                    "Instractor"
+                  )
+                  : (
                     <button
                       className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md mr-2"
                       onClick={() => handleMakeAdmin(user)}

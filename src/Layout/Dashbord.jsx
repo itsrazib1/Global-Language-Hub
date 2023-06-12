@@ -32,6 +32,7 @@ const Dashbord = () => {
   const noHeaderFooter =
     location.pathname.includes("/dashbord/mycart") ||
     location.pathname.includes("/dashbord/addedclass") ||
+    location.pathname.includes("/dashbord/payment") ||
     location.pathname.includes("/dashbord/alluser");
     const { user } = useContext(AuthContext);
     const isAdmin = user?.email === 'try@gmail.com';

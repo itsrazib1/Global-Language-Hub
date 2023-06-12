@@ -59,11 +59,11 @@ const Classes = () => {
   return (
     <>
     <h2 className="text-center text-5xl font-bold mt-5 text-[#3bbac3]">Total Class : {classe.length || 0} </h2>
-    <div className="grid border-2 p-3 ps-5 border-black rounded-tr-none rounded-3xl rounded-bl-none grid-cols-1 md:grid-cols-3 gap-4  my-10">
+    <div className="grid  p-3 ps-5 border-black rounded-tr-none rounded-3xl rounded-bl-none grid-cols-1 md:grid-cols-3 gap-4  my-10">
   {classes.map((classData) => (
     <div
       key={classData._id}
-      className={`p-4 card shadow-black my-2 rounded-tr-none rounded-3xl rounded-bl-none  w-96 bg-base-100 shadow-xl class-card ${
+      className={`p-4 card  w-full gap-4 shadow-black my-2 rounded-tr-none rounded-3xl rounded-bl-none   bg-base-100 shadow-xl class-card ${
         classData.availableSeats === 0 ? "bg-red-400 text-white" : "bg-white"
       }`}
     >
