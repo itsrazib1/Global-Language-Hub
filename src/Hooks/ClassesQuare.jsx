@@ -8,7 +8,7 @@ const ClassesQuare = () =>
     const { refetch, data: classe = [] } = useQuery({
         queryKey: ['classes',user?.email],
         queryFn: async() =>{
-            const res = await fetch(`http://localhost:5000/Classes?email=${user.email}`)
+            const res = await fetch(`https://b7a12-summer-camp-server-side-itsrazib1.vercel.app/Classes?email=${user.email}`)
             return res.json();
         },
       })

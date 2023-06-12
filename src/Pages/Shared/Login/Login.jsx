@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import img from "../../../../public/img/ielts.jpg";
 
 import { useForm } from "react-hook-form";
 import Sociallogin from "../SocialLogin/Sociallogin";
@@ -36,7 +37,7 @@ const Login = () => {
       </Helmet>
       <div className="md:flex flex-row text-center">
         <div className="md:w-[50%] justify-center mt-16">
-          <img src="../../../../public/img/ielts.jpg" alt="" />
+          <img src={img} alt="" />
         </div>
         <div className="md:w-[50%] flex flex-col text-center bg-sky-100 items-center justify-center h-[500px]">
           <h1 className="text-2xl font-bold ">Login</h1>
@@ -61,7 +62,7 @@ const Login = () => {
                 <p className="text-red-500 text-sm mb-4">Password is required</p>
               )}
               <span
-                className="absolute right-3 transform -mt-11 cursor-pointer"
+                className="absolute right-3 mt-3 transform  cursor-pointer"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}

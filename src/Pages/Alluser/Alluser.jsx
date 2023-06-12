@@ -4,12 +4,12 @@ import { FaTrashAlt, FaUserTie } from "react-icons/fa";
 import Swal from "sweetalert2";
 const Alluser = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/users");
+    const res = await fetch("https://b7a12-summer-camp-server-side-itsrazib1.vercel.app/users");
     return res.json();
   });
 
   const handleDeleteClass = (user) => {
-    fetch(`http://localhost:5000/users/${user._id}`, {
+    fetch(`https://b7a12-summer-camp-server-side-itsrazib1.vercel.app/users/${user._id}`, {
       method: "DELETE",
     })
       .then((response) => {
@@ -33,7 +33,7 @@ const Alluser = () => {
 
 
   const handleMakeAdmin = user => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`,{
+    fetch(`https://b7a12-summer-camp-server-side-itsrazib1.vercel.app/users/admin/${user._id}`,{
         method: 'PATCH'
     })
     .then(res => res.json())

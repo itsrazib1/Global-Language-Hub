@@ -5,7 +5,7 @@ const Instructors = () => {
   console.log(instructors);
   useEffect(() => {
     // Fetching instructor data from the JSON file
-    fetch("http://localhost:5000/instactor")
+    fetch("https://b7a12-summer-camp-server-side-itsrazib1.vercel.app/instactor")
       .then((response) => response.json())
       .then((data) => setInstructors(data))
       .catch((error) => console.log("Error fetching instructors:", error));

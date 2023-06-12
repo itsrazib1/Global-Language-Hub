@@ -11,7 +11,7 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/Studentclass")
+    fetch("https://b7a12-summer-camp-server-side-itsrazib1.vercel.app/Studentclass")
       .then((response) => response.json())
       .then((data) => {
         setSelectedClasses(data);
@@ -21,7 +21,7 @@ const Dashboard = () => {
   }, []);
 
   const handleDeleteClass = (classId) => {
-    fetch(`http://localhost:5000/Studentclass/${classId}`, {
+    fetch(`https://b7a12-summer-camp-server-side-itsrazib1.vercel.app/Studentclass/${classId}`, {
       method: "DELETE",
     })
       .then((response) => {

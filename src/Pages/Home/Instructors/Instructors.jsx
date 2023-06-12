@@ -8,7 +8,7 @@ const Instructors = () => {
 
   useEffect(() => {
     const fetchInstructors = async () => {
-      const response = await fetch('http://localhost:5000/instactor');
+      const response = await fetch('https://b7a12-summer-camp-server-side-itsrazib1.vercel.app/instactor');
       const data = await response.json();
       setInstructors(data);
     };

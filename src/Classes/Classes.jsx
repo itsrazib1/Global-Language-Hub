@@ -6,8 +6,9 @@ import ClassesQuare from "../Hooks/ClassesQuare";
 const Classes = () => {
   const [classes, setClasses] = useState([]);
   const [classe] = ClassesQuare();
+  console.log(classe);
    useEffect(() => {
-    fetch("http://localhost:5000/Classes")
+    fetch("https://b7a12-summer-camp-server-side-itsrazib1.vercel.app/Classes")
       .then((response) => response.json())
       .then((data) => setClasses(data))
       .catch((error) => console.error(error));
@@ -22,7 +23,7 @@ const Classes = () => {
           (classData) => classData._id === _id
         );
         if (selectedClass) {
-          fetch("http://localhost:5000/Studentclass", {
+          fetch("https://b7a12-summer-camp-server-side-itsrazib1.vercel.app/Studentclass", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -58,7 +59,7 @@ const Classes = () => {
 
   return (
     <>
-    <h2 className="text-center text-5xl font-bold mt-5 text-[#3bbac3]">Total Class : {classe.length || 0} </h2>
+    <h2 className="text-center text-5xl font-bold mt-5 text-[#3bbac3]">Total Class : {classes.length || 0} </h2>
     <div className="grid  p-3 ps-5 border-black rounded-tr-none rounded-3xl rounded-bl-none grid-cols-1 md:grid-cols-3 gap-4  my-10">
   {classes.map((classData) => (
     <div

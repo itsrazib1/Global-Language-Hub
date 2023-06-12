@@ -20,7 +20,7 @@ const Dashbord = () => {
   
 
   useEffect(() => {
-    fetch('http://localhost:5000/users')
+    fetch('https://b7a12-summer-camp-server-side-itsrazib1.vercel.app/users')
       .then(response => response.json())
       .then(data => setUsers(data));
   }, []);
@@ -37,7 +37,7 @@ const Dashbord = () => {
     const { user } = useContext(AuthContext);
     const isAdmin = user?.email === 'try@gmail.com';
     const isInstractor = user?.email === 'try1@gmail.com';
-console.log('https://global-language-hub-server-xoxorazibahamed-gmailcom.vercel.app/');
+console.log('https://b7a12-summer-camp-server-side-itsrazib1.vercel.app/');
   return (
     <div>
 
